@@ -45,7 +45,7 @@ void UButtonController::TickComponent( float DeltaTime, ELevelTick TickType, FAc
 	{
 		for (AActor* actor : OverlappingActors)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Overlapping: %s"), *actor->GetName());
+			//UE_LOG(LogTemp, Warning, TEXT("Overlapping: %s"), *actor->GetName());
 		}
 
 		PressDown = true;
@@ -68,15 +68,10 @@ void UButtonController::TickComponent( float DeltaTime, ELevelTick TickType, FAc
 		SkeletalComponent->Play(false);
 	}
 	else if(!PressDown && !SkeletalComponent->IsPlaying()){
-		UE_LOG(LogTemp, Warning, TEXT("PLAYING ANIMATION Backwards!"));
+		//UE_LOG(LogTemp, Warning, TEXT("PLAYING ANIMATION Backwards!"));
 		SkeletalComponent->SetPlayRate(-1.0f);
 		SkeletalComponent->Play(false);
 	}
-	
-}
-void UButtonController::OnBeginOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult) 
-{
-
 }
 
 
