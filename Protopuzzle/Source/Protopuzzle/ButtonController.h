@@ -2,9 +2,10 @@
 
 #pragma once
 
+#include "Engine/TriggerVolume.h"
+//
 #include "Components/ActorComponent.h"
 #include "ButtonController.generated.h"
-
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class PROTOPUZZLE_API UButtonController : public UActorComponent
@@ -21,6 +22,12 @@ public:
 	// Called every frame
 	virtual void TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction ) override;
 
-		
+	UPROPERTY(EditAnywhere)
+	ATriggerVolume* trigger = nullptr;
+
+	void OnBeginOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
+
+private:
+	bool PressDown = false;
 	
 };
